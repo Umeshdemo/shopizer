@@ -5,8 +5,8 @@ pipeline {
                 steps {
                   echo "Deploying to Prod1"
                   sshagent(['ssh-key']) {
-                      sh "ssh -o StrictHostKeyChecking=no ec2-user@18.210.11.73 docker rm -f shopizer || true"
-                      sh "ssh -o StrictHostKeyChecking=no ec2-user@18.210.11.73 docker run -d --name=shopizer -p 8082:8080 raghavendradurgampudi/shopizer"
+                      sh "ssh -o StrictHostKeyChecking=no ec2-user@3.80.44.69 docker rm -f shopizer || true"
+                      sh "ssh -o StrictHostKeyChecking=no ec2-user@3.80.44.69 docker run -d --name=shopizer -p 8082:8080 raghavendradurgampudi/shopizer"
                   }
                 }
       }
@@ -14,8 +14,8 @@ pipeline {
                 steps {
                   echo "Deploying to Prod2"
                   sshagent(['ssh-key']) {
-                      sh "ssh -o StrictHostKeyChecking=no ec2-user@54.82.2.196 docker rm -f shopizer || true"
-                      sh "ssh -o StrictHostKeyChecking=no ec2-user@54.82.2.196 docker run -d --name=shopizer -p 8082:8080 raghavendradurgampudi/shopizer"
+                      sh "ssh -o StrictHostKeyChecking=no ec2-user@3.235.165.124 docker rm -f shopizer || true"
+                      sh "ssh -o StrictHostKeyChecking=no ec2-user@3.235.165.124 docker run -d --name=shopizer -p 8082:8080 raghavendradurgampudi/shopizer"
                 } 
               }
       }         
