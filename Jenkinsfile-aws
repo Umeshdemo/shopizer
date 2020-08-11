@@ -1,1 +1,13 @@
-
+pipeline {
+  agent any
+  stages{
+    stage ('Create AWS Stack') {
+      steps {
+        echo "Creating AWS CloudFormation Stack"
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+        sh 'aws cloudformation create-stack --stack-name shopizer --template-body file://aws-template-shopizer.yaml --region us-east-1 --parameters  ParameterKey=SSHKey,ParameterValue=aws-devops ParameterKey=ELBVPC,ParameterValue=vpc-9b0feae6 ParameterKey=ELBSubnet,ParameterValue="subnet-4e4c8528\\,subnet-55f76f18 "'
+        }
+      }
+    }
+  }
+}
