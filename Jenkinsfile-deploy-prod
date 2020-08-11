@@ -16,8 +16,8 @@ pipeline {
                   sshagent(['ssh-key']) {
                       sh "ssh -o StrictHostKeyChecking=no ec2-user@3.235.165.124 docker rm -f shopizer || true"
                       sh "ssh -o StrictHostKeyChecking=no ec2-user@3.235.165.124 docker run -d --name=shopizer -p 8082:8080 raghavendradurgampudi/shopizer"
-                } 
-              }
+                  }
+                }
       }         
   }
 }
